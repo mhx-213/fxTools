@@ -4,13 +4,13 @@
 import hou
 
 def colores():
-	try:
-		sel=hou.selectedNodes()
+	sel=hou.selectedNodes()
+	if len(sel)==0:
+		hou.ui.displayMessage("Como quieres que ponga un color si no seleccionas un nodo?")
+	else:	
 		for i in sel:
 			color=hou.ui.selectColor()
 			i.setColor(color)
-	except:
-		print "close"
 
 def generateOut():
 	try:
