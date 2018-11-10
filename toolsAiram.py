@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# encoding: latin1
+
 import hou
 
 def colores():
