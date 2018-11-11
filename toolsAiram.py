@@ -50,4 +50,4 @@ def generateOut():
 		hou.ui.displayMessage("Selecciona algun nodo anda")
 	
 def participantes():
-	hou.ui.displayMessage("Los participantes de este gran Pipe son: \nAiram Peña\nGerman Cebrian")
+	hou.ui.displayMessage("Los participantes de este gran Pipe son: \nAiram Peña\nGerman Cebrian\nBorja Manzano")
