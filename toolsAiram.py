@@ -51,3 +51,6 @@ def generateOut():
 	
 def participantes():
 	hou.ui.displayMessage("Los participantes de este gran Pipe son: \nAiram Peña\nGerman Cebrian\nBorja Manzano")
+
+def test():
+	print "hola"
