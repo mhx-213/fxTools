@@ -9,6 +9,8 @@
     <memberTool name="out"/>
     <memberTool name="colores"/>
     <memberTool name="participantes"/>
+    <memberTool name="copytome"/>
+    <memberTool name="tool_4"/>
   </toolshelf>
 
   <tool name="out" label="Create OUT" icon="">
@@ -24,5 +26,11 @@ toolsAiram.colores()]]></script>
   <tool name="participantes" label="Participantes" icon="$HOME/GitHub/fxTools/icons/workTeam.png">
     <script scriptType="python"><![CDATA[import toolsAiram
 toolsAiram.participantes()]]></script>
+  </tool>
+
+  <tool name="copytome" label="Self Copy" icon="">
+    <script scriptType="python"><![CDATA[import os
+import copyToMe
+]]></script>
   </tool>
 </shelfDocument>
