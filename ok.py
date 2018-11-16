@@ -1,22 +1,25 @@
+import os
+
 import dropbox
-
-print dropbox.__file__
-
-e="C:\Users\AiraM\Documents\GitHub\\"+"fxTools\cpios"
-path=e.replace("\\","/")
 
 dbx = dropbox.Dropbox('dwijBJu6Q5MAAAAAAAAFbUFtssDk4E9DJEOtg5KG85IA41RDUAIWn3N7Ldi5vUve')
 user = dbx.users_get_current_account()
+userName = os.getcwd().replace("\\","/").split("/")[2]
+print userName
 
-archivo = open(path+"/asd.cpio.Sop",'rb')
+userPath = os.path.expanduser("~").replace("\\","/")+"/Documents/"
 
-#dbx.files_upload(archivo.read(),"/testPy/asd.cpio.Sop", mute=True)
+houdiniList=[i for i in os.listdir(userPath) if "houdini" in i]
 
-res=dbx.files_list_folder("/testPy")
-
-rv={}
-for entry in res.entries:
-	rv[entry.name]=entry
-
-for i in rv:
-	print i
+for i in houdiniList:
+	houdiniCpioPath=os.path.join(userPath,i,"cpiosSUperCools").replace("\\","/")	
+	if not os.path.exists(houdiniCpioPath):
+		os.mkdir(houdiniCpioPath)
+	else:
+		cpiosList=os.listdir(houdiniCpioPath)
+		for a in cpiosList:
+			if userName in a:
+				fullPath = os.path.join(houdiniCpioPath,a).replace("\\","/")
+				print fullPath
+				archivo = open(fullPath,'rb')
+				dbx.files_upload(archivo.read(),os.path.join("/testPy/"+str(userName),a).replace("\\","/"), mute=True)
