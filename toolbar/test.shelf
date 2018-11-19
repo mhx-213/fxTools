@@ -9,8 +9,7 @@
     <memberTool name="out"/>
     <memberTool name="colores"/>
     <memberTool name="participantes"/>
-    <memberTool name="copytome"/>
-    <memberTool name="tool_4"/>
+    <memberTool name="copyt"/>
   </toolshelf>
 
   <tool name="out" label="Create OUT" icon="">
@@ -28,9 +27,10 @@ toolsAiram.colores()]]></script>
 toolsAiram.participantes()]]></script>
   </tool>
 
-  <tool name="copytome" label="Self Copy" icon="">
+  <tool name="copyt" label="Copy to / from" icon="$HOME/GitHub/fxTools/icons/mensaje-enviado.png">
     <script scriptType="python"><![CDATA[import os
-import copyToMe
+import copyNodes2Dropbox
+copyNodes2Dropbox.uiDisplay()
 ]]></script>
   </tool>
 </shelfDocument>

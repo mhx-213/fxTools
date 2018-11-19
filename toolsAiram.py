@@ -30,7 +30,7 @@ def generateOut():
 			nul.move([0,-1])
 			color=hou.Color([0,0.45,0.9])
 			nul.setColor(color)
-		#Create ROP
+		#Create Merge Object
 		elif panel[0]==1:
 			objMerge=padre.createNode("object_merge", "MERGE_" + panel[1])
 			objMerge.parm("objpath1").set(str(nodo.path()))
@@ -50,7 +50,7 @@ def generateOut():
 		hou.ui.displayMessage("Selecciona algun nodo anda")
 	
 def participantes():
-	hou.ui.displayMessage("Los participantes de este gran Pipe son: \nAiram Peña\nGerman Cebrian\nBorja Manzano")
+	hou.ui.displayMessage("Los participantes de este gran Pipe son: \nAiram Peña  ---> AiraM\nGerman Cebrian --- German\nBorja Manzano --- > edeviaN")
 
 def test():
 	print "hola"
