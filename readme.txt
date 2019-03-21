@@ -1,3 +1,7 @@
+Hi,
+
+This is a repository
+
 Muy buenas, para empezar, este va a ser un repositorio de tools apra houdini, asi que a darle caña, y a comentar ideas y fallos que vean.
 
 Para empezar, tienen que bajarse la APP de gitHub Desktop o descargarse los repositorios, y luego modificar el .env de houdini y añadirle la ruta donde tienen guardado el repositorio

@@ -22,7 +22,7 @@ def copyToFile(nameCpio):
 
 def pasteToFile():
 	if not os.path.exists(cpioPath):
-		hou.ui.displayMessage("Primero has de refrescar con 'donloadCpio.exe', se que es una putada, pero es lo que hay")
+		hou.ui.displayMessage("First you should refresh with 'downloadCpio.exe'")
 	else:
 		lista=list(os.listdir(cpioPath))
 		selectUser=hou.ui.selectFromList(lista,exclusive=True)
@@ -46,20 +46,35 @@ def uiDisplay():
 	folderDownload=os.path.join(gitPath,"customSoftware\\downloadSoftware").replace("\\","/")
 	folderUpload=os.path.join(gitPath,"customSoftware\\uploadSoftware").replace("\\","/")
 
-	uiName=hou.ui.readInput("Pon un nombre a tu cpio", buttons=("Save", "Copy From", "Download", "Upload", "Cancel",),close_choice=4)
+	uiName=hou.ui.readInput("Enter a name for save de CPIO", buttons=("Save", "Copy From", "Download", "Upload", "Cancel",),close_choice=4)
 	optionCpio,nameCpio=uiName
 	if optionCpio==0:
 		copyToFile(nameCpio)
-		os.startfile(folderUpload)
+		#os.startfile(folderUpload)
+		try:
+			execfile(userPath+"/GitHub/fxTools/uploaddbx.py")
+		except:
+			execfile(userPath+"/Documents/GitHub/fxTools/uploaddbx.py")
 	elif optionCpio==1:
-		ask=hou.ui.displayConfirmation("QUieres actualizar primero?")
+		ask=hou.ui.displayConfirmation("Do you want to update before?")
 		if ask==1:
-			os.startfile(folderDownload)
+			#os.startfile(folderDownload)
+			try:
+				execfile(userPath+"/GitHub/fxTools/downloaddbx.py")
+			except:
+				execfile(userPath+"/Documents/GitHub/fxTools/downloaddbx.py")
+			pasteToFile()
 		elif ask==0:
 			pasteToFile()
 		else:
 			pass
 	elif optionCpio==2:
-		os.startfile(folderDownload)
+		try:
+			execfile(userPath+"/GitHub/fxTools/downloaddbx.py")
+		except:
+			execfile(userPath+"/Documents/GitHub/fxTools/downloaddbx.py")
 	elif optionCpio==3:		
-		os.startfile(folderUpload)
+		try:
+			execfile(userPath+"/GitHub/fxTools/uploaddbx.py")
+		except:
+			execfile(userPath+"/Documents/GitHub/fxTools/uploaddbx.py")
