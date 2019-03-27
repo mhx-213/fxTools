@@ -16,18 +16,17 @@ userPath = os.path.expanduser("~").replace("\\","/")
 houdiniList=[i for i in os.listdir(userPath) if "houdini" in i]
 
 for i in houdiniList:
-    houdiniCpioPath=os.path.join(userPath,i,"cpiosSUperCools").replace("\\","/")    
-    if not os.path.exists(houdiniCpioPath):
-        os.mkdir(houdiniCpioPath)
-    else:
-        cpiosList=os.listdir(houdiniCpioPath)
-        for a in cpiosList:
-            if userName in a:
-                fullPath = os.path.join(houdiniCpioPath,a).replace("\\","/")
+	houdiniCpioPath=os.path.join(userPath,i,"cpiosFromDropbox").replace("\\","/")    
+	if not os.path.exists(houdiniCpioPath):
+		os.mkdir(houdiniCpioPath)
+	else:
+		cpiosList=os.listdir(houdiniCpioPath)
+		for a in cpiosList:
+			if userName in a:
+				fullPath = os.path.join(houdiniCpioPath,a).replace("\\","/")
 
-                for qq in os.listdir(fullPath):
-                    cpioPath = os.path.join(fullPath,qq).replace("\\","/")
-                    archivo = open(cpioPath,'rb')
-                    
-
-                    dbx.files_upload(archivo.read(),os.path.join("/testPy/"+str(userName),qq).replace("\\","/"), mute=True)
+				for qq in os.listdir(fullPath):
+					if len(qq) == 6:
+						cpioPath = os.path.join(fullPath,qq).replace("\\","/")
+						archivo = open(cpioPath,'rb')
+						dbx.files_upload(archivo.read(),os.path.join("/testPy/"+str(userName),qq).replace("\\","/"), mute=True)
