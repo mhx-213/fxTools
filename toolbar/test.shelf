@@ -17,12 +17,12 @@
 toolsAiram.generateOut()]]></script>
   </tool>
 
-  <tool name="colores" label="Colores" icon="$HOME/GitHub/fxTools/icons/rgb.png">
+  <tool name="colores" label="Change Color Node" icon="$HOME/GitHub/fxTools/icons/rgb.png">
     <script scriptType="python"><![CDATA[import toolsAiram
 toolsAiram.colores()]]></script>
   </tool>
 
-  <tool name="participantes" label="Participantes" icon="$HOME/GitHub/fxTools/icons/workTeam.png">
+  <tool name="participantes" label="Users names" icon="$HOME/GitHub/fxTools/icons/workTeam.png">
     <script scriptType="python"><![CDATA[import toolsAiram
 toolsAiram.participantes()]]></script>
   </tool>
