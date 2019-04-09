@@ -22,13 +22,14 @@ for i in houdiniList:
     if not os.path.exists(houdiniCpioPath):
         os.mkdir(houdiniCpioPath)
     else:
-        cpiosList=os.listdir(houdiniCpioPath)
+        cpiosList = os.listdir(houdiniCpioPath)
+        print cpiosList
         for a in cpiosList:
             if userName in a:
                 fullPath = os.path.join(houdiniCpioPath, a).replace("\\", "/")
-
+                print fullPath
                 for qq in os.listdir(fullPath):
-                    if len(qq) == 6:
+                    if len(qq.split(".")) == 6:
                         cpioPath = os.path.join(fullPath, qq).replace("\\", "/")
                         archivo = open(cpioPath, 'rb')
                         dbx.files_upload(archivo.read(), os.path.join("/testPy/" + str(userName), qq).replace("\\", "/"), mute=True)
