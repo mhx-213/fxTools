@@ -6,7 +6,7 @@ print userName
 res = dbx.files_list_folder('/testPy/')
 pathCpios = 'CpiosSuperCools'
 userPath = os.path.expanduser('~').replace('\\', '/') + '/Documents/'
-houdiniList = [ i for i in os.listdir(userPath) if 'houdini' in i ]
+houdiniList = [i for i in os.listdir(userPath) if 'houdini' in i]
 print houdiniList
 for i in houdiniList:
     houdiniCpioPath = os.path.join(userPath, i, 'cpiosSuperCools').replace('\\', '/')

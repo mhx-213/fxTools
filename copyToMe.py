@@ -1,11 +1,12 @@
-import os, hou
+import os
+import hou
 
 
-user=os.getenv('USER')
-path=os.path.join(hou.homeHoudiniDirectory(),user).replace("\\","/")
-pathShelf=os.path.join(path,user+'.shelf').replace("\\","/")
-iconOUT=''
-cpioInstaller="""import os
+user = os.getenv('USER')
+path = os.path.join(hou.homeHoudiniDirectory(), user).replace("\\", "/")
+pathShelf = os.path.join(path, user+'.shelf').replace("\\" ,"/")
+iconOUT = ''
+cpioInstaller = """import os
 path=%(file)r
 toolName=(%(tt)r)
 if kwargs['ctrlclick']:

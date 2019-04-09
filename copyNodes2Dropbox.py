@@ -23,7 +23,7 @@ def copy_to_file(name_cpio):
 
     selNodes = hou.selectedNodes()
     typeNet = selNodes[0].type().category().typeName()
-    fullPath = os.path.join(CPIO_USER_PATH, USER_NAME + "." + VERSION + "." + typeNet + "." + name_cpio + ".cpio")
+    fullPath = os.path.join(CPIO_USER_PATH,	USER_NAME + "." + VERSION + "." + typeNet + "." + name_cpio + ".cpio")
     selNodes[0].parent().saveChildrenToFile(selNodes, [], fullPath)
 
 
@@ -40,24 +40,24 @@ def pasteToFile():
             listaCpios = list(os.listdir(cpioPathUser))
             if len(listaCpios):
                 allCpios.append(listaCpios)
-                
+
         goodCpios = []
         for a in allCpios:
             for e in a:
-                if len(e) == 6:
+                if len(e.split(".")) == 6:
                     goodCpios.append(e)
-        
+
         print goodCpios
         for i in goodCpios:
             user = i.rsplit(".")[0]
-            version, ctx, name, _ = i.split(".",1)[-1].rsplit(".",3)
+            version, ctx, name, _ = i.split(".", 1)[-1].rsplit(".", 3)
             full = os.path.join("/" + user, version, ctx, name).replace("\\", "/")
             fullList.append(full)
-        
+
         selectCpio = hou.ui.selectFromTree(fullList, exclusive=True)
         if len(selectCpio):
             cpioSelected = selectCpio[0]
-            fullName = cpioSelected.replace("/",".").split(".",1)[1]
+            fullName = cpioSelected.replace("/", ".").split(".", 1)[1]
             user = cpioSelected.split("/")[1]
             ctxCpio = cpioSelected.split("/")[3]
             theGoodOne = os.path.join(CPIO_PATH, user, fullName + ".cpio").replace("\\", "/")
@@ -76,7 +76,6 @@ def pasteToFile():
                 shutil.copyfile(theGoodOne, nameForTemp)
 
                 hou.ui.displayMessage("You are in other context, but don't worry, you have the node in your clipboard, you should paste (ctrl + v) in the good context")
-
 
 
 def uiDisplay():
