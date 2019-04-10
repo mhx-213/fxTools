@@ -5,10 +5,11 @@
  Note, that two definitions of the same element are not allowed in
  a single file. -->
 
-  <toolshelf name="test" label="MHX TOOLS">
+  <toolshelf name="toolbarMHX" label="MHX TOOLS">
     <memberTool name="out"/>
     <memberTool name="colores"/>
     <memberTool name="participantes"/>
+    <memberTool name="clean"/>
     <memberTool name="copyt"/>
   </toolshelf>
 
@@ -25,6 +26,11 @@ toolsAiram.colores()]]></script>
   <tool name="participantes" label="Users names" icon="$HOME/GitHub/fxTools/icons/workTeam.png">
     <script scriptType="python"><![CDATA[import toolsAiram
 toolsAiram.participantes()]]></script>
+  </tool>
+
+  <tool name="clean" label="Clean Nodes" icon="$HOME/GitHub/fxTools/icons/clean.png">
+    <script scriptType="python"><![CDATA[import toolsAiram
+toolsAiram.cleanNodes()]]></script>
   </tool>
 
   <tool name="copyt" label="Copy to / from" icon="$HOME/GitHub/fxTools/icons/mensaje-enviado.png">

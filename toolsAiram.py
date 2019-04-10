@@ -22,7 +22,10 @@ def generateOut():
         selected = hou.selectedNodes()
         nodo = selected[0]
         padre = nodo.parent()
-        panel = hou.ui.readInput("Name of the node: OUT_", buttons=('Only OUT', "Create Obj. Merge", "Cancel"), close_choice=2)
+        panel = hou.ui.readInput(
+            "Name of the node: OUT_",
+            buttons=('Only OUT', "Create Obj. Merge", "Cancel"),
+            close_choice=2)
         # Create Null
         if panel[0] == 0:
             nul = padre.createNode("null", "OUT_" + panel[1])
@@ -53,13 +56,45 @@ def generateOut():
 
 
 def participantes():
-    hou.ui.displayMessage("Users in the Branch: \nAiram Peña ---> AiraM\nGerman Cebrian ---> German\nBorja Manzano ---> endeviaN")
+    hou.ui.displayMessage("Users in the Branch: \nAiram Peña ---> AiraM\
+        \nGerman Cebrian ---> German\
+        \nBorja Manzano ---> endeviaN")
+
+
+def cleanNodes():
+    nodes = hou.selectedNodes()
+
+    for node in nodes:
+        child = [i for i in node.children()]
+
+        for childNodes in child:
+            conections = childNodes.inputConnections()
+            input = len(conections)
+            outconections = childNodes.outputConnections()
+            output = len(outconections)
+            total = input + output
+            bypass = childNodes.isBypassed()
+            isDependent = childNodes.dependents()
+
+            if total == 0 and len(isDependent) == 0:
+                childNodes.destroy()
+
+            elif bypass == 1 and len(isDependent) == 0:
+                childNodes.destroy()
+
+            elif total == 0 and len(isDependent) > 1:
+                c = [i for i in isDependent
+                     if len(i.path().split((childNodes.path()))) == 1]
+                if len(c) == 0:
+                    childNodes.destroy()
 
 
 '''def separateByName():
     sel = hou.selectedNodes()[0]
     geo = sel.geometry()
-    typ, attrib = hou.ui.readInput("Write the attrib to split", buttons=("Points","Prims",""))
+    typ, attrib = hou.ui.readInput(
+                                   "Write the attrib to split",
+                                   buttons=("Points","Prims",""))
 
     listAttrib = primStringAttribValues(attrib)
     sub = sel.parent().createNode("subnetwork", "contenedor")
