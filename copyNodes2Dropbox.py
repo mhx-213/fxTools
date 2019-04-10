@@ -23,7 +23,9 @@ def copy_to_file(name_cpio):
 
     selNodes = hou.selectedNodes()
     typeNet = selNodes[0].type().category().typeName()
-    fullPath = os.path.join(CPIO_USER_PATH,	USER_NAME + "." + VERSION + "." + typeNet + "." + name_cpio + ".cpio")
+    fullPath = os.path.join(
+        CPIO_USER_PATH,
+        USER_NAME + "." + VERSION + "." + typeNet + "." + name_cpio + ".cpio")
     selNodes[0].parent().saveChildrenToFile(selNodes, [], fullPath)
 
 
@@ -51,7 +53,8 @@ def pasteToFile():
         for i in goodCpios:
             user = i.rsplit(".")[0]
             version, ctx, name, _ = i.split(".", 1)[-1].rsplit(".", 3)
-            full = os.path.join("/" + user, version, ctx, name).replace("\\", "/")
+            full = os.path.join(
+                "/" + user, version, ctx, name).replace("\\", "/")
             fullList.append(full)
 
         selectCpio = hou.ui.selectFromTree(fullList, exclusive=True)
@@ -60,7 +63,8 @@ def pasteToFile():
             fullName = cpioSelected.replace("/", ".").split(".", 1)[1]
             user = cpioSelected.split("/")[1]
             ctxCpio = cpioSelected.split("/")[3]
-            theGoodOne = os.path.join(CPIO_PATH, user, fullName + ".cpio").replace("\\", "/")
+            theGoodOne = os.path.join(
+                CPIO_PATH, user, fullName + ".cpio").replace("\\", "/")
 
             for i in hou.ui.paneTabs():
                 if "NetworkEditor" in i.type().name():
@@ -75,12 +79,19 @@ def pasteToFile():
                 nameForTemp = os.path.join(TEMP_PATH, ctxCpio + "_copy.cpio")
                 shutil.copyfile(theGoodOne, nameForTemp)
 
-                hou.ui.displayMessage("You are in other context, but don't worry, you have the node in your clipboard, you should paste (ctrl + v) in the good context")
+                hou.ui.displayMessage(
+                    "You are in other context, but don't worry,\
+                     you have the node in your clipboard,\
+                      you should paste (ctrl + v) in the good context")
 
 
 def uiDisplay():
 
-    ui_name = hou.ui.readInput("Enter a name for save de CPIO", buttons=("Save", "Copy From", "Download", "Upload", "Cancel", ), close_choice=4)
+    ui_name = hou.ui.readInput(
+        "Enter a name for save de CPIO",
+        buttons=("Save", "Copy From", "Download", "Upload", "Cancel", ),
+        close_choice=4)
+
     option_cpio, name_cpio = ui_name
     if option_cpio == 0:
         copy_to_file(name_cpio)
