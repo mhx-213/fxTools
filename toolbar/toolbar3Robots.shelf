@@ -5,7 +5,7 @@
  Note, that two definitions of the same element are not allowed in
  a single file. -->
 
-  <toolshelf name="toolbarMHX" label="MHX TOOLS">
+  <toolshelf name="toolbar3Robtos" label="3 Robots">
     <memberTool name="out"/>
     <memberTool name="colores"/>
     <memberTool name="participantes"/>

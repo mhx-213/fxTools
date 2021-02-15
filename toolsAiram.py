@@ -57,8 +57,7 @@ def generateOut():
 
 def participantes():
     hou.ui.displayMessage("Users in the Branch: \nAiram Peña ---> AiraM\
-        \nGerman Cebrian ---> German\
-        \nBorja Manzano ---> endeviaN")
+        \nDavid Blanco ---> White")
 
 
 def cleanNodes():
